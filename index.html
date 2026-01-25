@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Life | Study Abroad Consultancy</title>
+    
+    <link rel="icon" type="image/x-icon" href="icon.ico">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <style>
+        :root {
+            --poster-purple: #4a2d8a;
+            --poster-green: #8dc63f;
+            --poster-white: #ffffff;
+            --poster-dark: #2d1b5a;
+        }
+
+        body { font-family: 'Montserrat', sans-serif; overflow-x: hidden; }
+        h1, h2 { font-weight: 700; }
+        .italic-brand { font-family: 'Playfair Display', serif; font-style: italic; color: #555; }
+
+        /* Navigation */
+        .navbar { border-bottom: 4px solid var(--poster-green); background-color: white !important; padding: 10px 0; }
+        .navbar-brand { color: var(--poster-purple) !important; transition: transform 0.3s ease; }
+        .navbar-brand img { transition: transform 0.3s ease; }
+        .navbar-brand:hover img { transform: scale(1.1); }
+        
+        /* Hero Section */
+       /* Updated Hero Style with Faded Overlay */
+.hero { 
+    /* Fallback color if image fails */
+    background-color: var(--poster-purple); 
+    
+    /* The Fade Overlay + Image Link */
+    background: linear-gradient(rgba(74, 45, 138, 0.8), rgba(74, 45, 138, 0.8)), 
+                url('https://images.pexels.com/photos/267885/pexels-photo-267885.jpeg?auto=compress&cs=tinysrgb&w=1920');
+    
+    /* Ensure it covers the whole area */
+    background-size: cover !important;
+    background-position: center center !important;
+    background-repeat: no-repeat;
+    
+    /* Perimeter and Padding */
+    padding: 160px 0; 
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    color: white;
+}
+
+        /* Buttons & Colors */
+        .btn-green { background-color: var(--poster-green); color: white; border: none; padding: 12px 30px; border-radius: 50px; font-weight: bold; transition: 0.3s; }
+        .btn-green:hover { background-color: #7ab330; color: white; transform: scale(1.05); }
+        .btn-outline-purple { border: 1px solid var(--poster-purple); color: var(--poster-purple); transition: 0.3s; }
+        .btn-outline-purple:hover { background: var(--poster-purple); color: white; }
+        .bg-purple { background-color: var(--poster-purple) !important; }
+        .text-purple { color: var(--poster-purple); }
+
+        /* Services Styling */
+        .service-card {
+            border: 1px solid #eee;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            background: white;
+            height: 100%;
+            position: relative;
+        }
+        .service-card:hover {
+            box-shadow: 0 10px 30px rgba(74, 45, 138, 0.15);
+            transform: translateY(-5px);
+        }
+        .service-img { height: 200px; object-fit: cover; width: 100%; }
+        .price-badge {
+            position: absolute;
+            top: 15px; right: 15px;
+            background: var(--poster-green);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 0.8rem;
+            z-index: 2;
+        }
+
+        /* Country Cards */
+        .country-card {
+            border: none;
+            border-radius: 15px;
+            background: var(--poster-purple);
+            color: white;
+            padding: 20px;
+            transition: 0.3s;
+        }
+        .country-card:hover { transform: translateY(-10px); background: var(--poster-green); }
+
+        /* Form & Location */
+        #map-container { height: 350px; width: 100%; border-radius: 15px; overflow: hidden; border: 5px solid #eee; }
+        .form-control, .form-select { border-radius: 10px; padding: 12px; border: 1px solid #ddd; }
+        
+        /* Testimonials */
+        .testimonial-panel {
+            background: white;
+            border-radius: 25px;
+            border-left: 10px solid var(--poster-green);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.05);
+            padding: 40px;
+        }
+        .testimonial-img { width: 100px; height: 100px; object-fit: cover; border: 4px solid var(--poster-purple); border-radius: 50%; }
+        
+        footer { background-color: var(--poster-dark); color: white; }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg sticky-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold d-flex align-items-center fs-2" href="#">
+                <img src="icon.png" alt="Logo" width="55" height="55" class="d-inline-block align-text-top me-3">
+                DATA LIFE
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link px-3" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="#services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="#countries">Countries</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="#location">Location</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="#testimonials">Success Stories</a></li>
+                    <li class="nav-item"><a class="btn btn-green ms-lg-3" href="#book">Book Consultation</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+<header class="hero text-center">
+    <div class="container">
+        <h1 class="display-2 mb-2 fw-bold text-uppercase">Study Abroad</h1>
+        <h3 class="italic-brand mb-4 text-white opacity-75">Consultancy</h3>
+        <p class="lead mb-5 fw-light">DEVELOPING GREAT MINDS</p>
+        <a href="#book" class="btn btn-green btn-lg shadow-lg">START YOUR APPLICATION</a>
+    </div>
+</header>
+
+    <section id="about" class="py-5">
+        <div class="container text-center">
+            <h2 class="text-purple mb-4">About Us</h2>
+            <p class="mx-auto lead" style="max-width: 900px;">
+                Data Life is your trusted partner in international education. From selecting the right destination to securing your visa, we bridge the gap between your local potential and global opportunities.
+            </p>
+        </div>
+    </section>
+
+    <section id="services" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center text-purple fw-bold mb-5">Our Expert Services</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="service-card">
+                        <span class="price-badge">Premium</span>
+                        <img src="scholaruni.jpeg" class="service-img" alt="Scholarship">
+                        <div class="p-4">
+                            <h5 class="fw-bold">Scholarship Application</h5>
+                            <p class="text-muted small">We help you identify and apply for full and partial funding opportunities abroad.</p>
+                            <a href="#book" class="btn btn-outline-purple w-100">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-card">
+                        <span class="price-badge">Free Initial</span>
+                        <img src="doctor.jpeg" class="service-img" alt="Career">
+                        <div class="p-4">
+                            <h5 class="fw-bold">Career Guidance</h5>
+                            <p class="text-muted small">Aligning your academic choices with the global job market demands.</p>
+                            <a href="#book" class="btn btn-outline-purple w-100">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-card">
+                        <span class="price-badge">Guaranteed</span>
+                        <img src="visa.jpeg" class="service-img" alt="Visa">
+                        <div class="p-4">
+                            <h5 class="fw-bold">Visa Assistance</h5>
+                            <p class="text-muted small">Expert handling of permit applications and mock interview sessions.</p>
+                            <a href="#book" class="btn btn-outline-purple w-100">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-card">
+                        <span class="price-badge">A1-C1</span>
+                        <img src="language.png" class="service-img" alt="German">
+                        <div class="p-4">
+                            <h5 class="fw-bold">German Language Training</h5>
+                            <p class="text-muted small">Professional language coaching specifically for study and work in Germany.</p>
+                            <a href="#book" class="btn btn-outline-purple w-100">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-card">
+                        <span class="price-badge">Full Audit</span>
+                        <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&q=80&w=500" class="service-img" alt="Paperwork">
+                        <div class="p-4">
+                            <h5 class="fw-bold">Paperwork Preparation</h5>
+                            <p class="text-muted small">Document authentication, translation, and SOP writing support.</p>
+                            <a href="#book" class="btn btn-outline-purple w-100">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-card">
+                        <span class="price-badge">Arrival Care</span>
+                        <img src="airport.jpeg" class="service-img" alt="Airport">
+                        <div class="p-4">
+                            <h5 class="fw-bold">Airport Pickup</h5>
+                            <p class="text-muted small">Safe and reliable transport from the airport to your new university accommodation.</p>
+                            <a href="#book" class="btn btn-outline-purple w-100">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="countries" class="py-5">
+        <div class="container">
+            <h2 class="text-center text-purple fw-bold mb-5">Study Destinations</h2>
+            <div class="row g-4 text-center">
+                <div class="col-6 col-md-3"><div class="country-card"><h4>INDIA</h4></div></div>
+                <div class="col-6 col-md-3"><div class="country-card"><h4>GERMANY</h4></div></div>
+                <div class="col-6 col-md-3"><div class="country-card"><h4>TURKEY</h4></div></div>
+                <div class="col-6 col-md-3"><div class="country-card"><h4>INDONESIA</h4></div></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center text-purple fw-bold mb-5">Success Stories</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="testimonial-panel d-md-flex align-items-center">
+                        <div class="text-center mb-4 mb-md-0 me-md-5">
+                            <img src="delight.jpg" alt="Student" class="testimonial-img mb-3">
+                            <h5 class="fw-bold mb-0">Tatenda T.</h5>
+                            <small class="text-purple fw-bold">KPRIET Campus</small>
+                        </div>
+                        <div class="flex-grow-1">
+                            <p class="fst-italic mb-3">"Data Life turned my dream of studying abroad into a reality. Their patience with my visa paperwork and their German language classes made all the difference!"</p>
+                            <p class="small text-muted mb-0"><strong>Program:</strong> Computer Science</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="book" class="py-5">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-md-6">
+                    <div class="p-4 border rounded-4 shadow-sm bg-white">
+                        <h2 class="text-purple fw-bold mb-4">Book Consultation</h2>
+                        <form id="consultationForm">
+                            <div class="mb-3">
+                                <label class="form-label fw-bold">Full Name</label>
+                                <input type="text" id="userName" class="form-control" placeholder="Enter your name" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label fw-bold">Email Address</label>
+                                <input type="email" id="userEmail" class="form-control" placeholder="name@example.com" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label fw-bold">Country of Interest</label>
+                                <select id="userCountry" class="form-select" required>
+                                    <option value="">Select Country...</option>
+                                    <option value="India">India</option>
+                                    <option value="Germany">Germany</option>
+                                    <option value="Turkey">Turkey</option>
+                                    <option value="Indonesia">Indonesia</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label fw-bold">Program/Course of Interest</label>
+                                <input type="text" id="userCourse" class="form-control" placeholder="e.g. Nursing, Engineering" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label fw-bold">Academic Level</label>
+                                <select id="userLevel" class="form-select" required>
+                                    <option value="">Select Level...</option>
+                                    <option value="Undergraduate">Undergraduate</option>
+                                    <option value="Postgraduate">Postgraduate</option>
+                                    <option value="Masters">Masters</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn bg-purple text-white w-100 py-3 fw-bold">SEND WHATSAPP REQUEST</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div id="location" class="col-md-6">
+                    <h2 class="text-purple fw-bold">Our Location</h2>
+                    <p class="mb-4">Cabs building, Jason Moyo and Leopard Takawira 1st floor office 4, BULAWAYO</p>
+                    <div id="map-container" class="mb-3 shadow-sm">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3725.21544485542!2d28.57962637502948!3d-20.156094681283684!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1eb5538e1a660a95%3A0xc3f9821a361730d7!2sJason%20Moyo%20St%20%26%20Leopold%20Takawira%20Ave%2C%20Bulawayo!5e0!3m2!1sen!2szw!4v1700000000000!5m2!1sen!2szw" 
+                            width="100%" 
+                            height="100%" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy">
+                        </iframe>
+                    </div>
+                    <button onclick="getLocation()" class="btn btn-outline-dark">📍 Get Directions</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-5">
+        <div class="container text-center">
+            <h4 class="fw-bold mb-4">DATA LIFE</h4>
+            <p>Bulawayo: +263 718 091 924 | International: +91 88071 90943</p>
+            <p class="small mb-0">© 2026 Data Life Study Abroad Consultancy. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementById('consultationForm').onsubmit = function(e) {
+            e.preventDefault();
+            const name = document.getElementById('userName').value;
+            const email = document.getElementById('userEmail').value;
+            const country = document.getElementById('userCountry').value;
+            const course = document.getElementById('userCourse').value;
+            const level = document.getElementById('userLevel').value;
+            
+            const phoneNumber = "263718091924"; 
+            const message = `Hi, my name is ${name}.\nI want to apply for ${course} (${level}) in ${country}.\nMy email: ${email}.`;
+            
+            window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, '_blank');
+        }
+
+        function getLocation() {
+            // Opens Google Maps directly to the location for mobile/desktop directions
+            window.open(`https://www.google.com/maps/dir/?api=1&destination=-20.1560946,28.5796263`, '_blank');
+        }
+    </script>
+</body>
+</html>
